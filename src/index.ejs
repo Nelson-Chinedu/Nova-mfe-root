@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Root Config</title>
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+  
+  <meta name="importmap-type" content="systemjs-importmap" />
+
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.14.3/dist/system.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.14.3/dist/extras/amd.min.js"></script>
+
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.5/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"
+      }
+    }
+  </script>
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.5/lib/system/single-spa.min.js" as="script">
+
+  <% if (isLocal) { %>
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "@NovaOrg/root-config": "//localhost:9000/NovaOrg-root-config.js",
+        "@NovaOrg/nova-mfe-auth": "http://localhost:8081/NovaOrg-nova-mfe-auth.js",
+        "@NovaOrg/nova-mfe-shared-ui": "http://localhost:8080/NovaOrg-nova-mfe-shared-ui.js"
+      }
+    }
+  </script>
+  <% } %>
+
+  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
+</head>
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <main></main>
+
+  <script>
+  // This function starts the whole MFE engine
+  const init = () => System.import('@NovaOrg/root-config');
+
+  // If you are using the injector, wait for its promise
+  if (window.importMapInjector) {
+    window.importMapInjector.initPromise.then(init);
+  } else {
+    // If no injector, wait for the DOM to ensure the <script type="systemjs-importmap"> 
+    // tags have been parsed by SystemJS
+    document.addEventListener('DOMContentLoaded', init);
+  }
+</script>
+
+  <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+</body>
+</html>
