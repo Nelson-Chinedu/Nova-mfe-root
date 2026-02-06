@@ -17,12 +17,17 @@
 
   -->
 
-  <main>
+  <div id="single-spa-layout-root">
     <route path="auth">
       <application name="@NovaOrg/nova-mfe-auth"></application>
     </route>
+
     <route default>
       <application name="@NovaOrg/nova-mfe-shared-layout"></application>
+
+      <route path="dashboard">
+        <application name="@NovaOrg/nova-mfe-dashboard"></application>
+      </route>
     </route>
-  </main>
+  </div>
 </single-spa-router>
