@@ -18,8 +18,11 @@
   -->
 
   <main>
-    <route default>
+    <route path="auth">
       <application name="@NovaOrg/nova-mfe-auth"></application>
+    </route>
+    <route default>
+      <application name="@NovaOrg/nova-mfe-shared-layout"></application>
     </route>
   </main>
 </single-spa-router>
