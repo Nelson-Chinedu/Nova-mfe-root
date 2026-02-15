@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Root Config</title>
+  <title>Nova</title>
   
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
   
@@ -20,7 +20,8 @@
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.5/lib/system/single-spa.min.js",
         "react": "https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js",
-        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js",
+        "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"
       }
     }
   </script>
@@ -34,7 +35,8 @@
         "@NovaOrg/nova-mfe-auth": "http://localhost:8081/NovaOrg-nova-mfe-auth.js",
         "@NovaOrg/nova-mfe-shared-ui": "http://localhost:8080/NovaOrg-nova-mfe-shared-ui.js",
         "@NovaOrg/nova-mfe-shared-layout": "http://localhost:8082/NovaOrg-nova-mfe-shared-layout.js",
-        "@NovaOrg/nova-mfe-dashboard": "http://localhost:8083/main.js"
+        "@NovaOrg/nova-mfe-dashboard": "http://localhost:8083/main.js",
+        "@NovaOrg/nova-mfe-recruitment": "http://localhost:8084/main.js"
       }
     }
   </script>
