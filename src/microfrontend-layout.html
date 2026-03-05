@@ -1,3 +1,9 @@
+<template id="main-loader">
+  <div class="spinner-container">
+    <div class="spinner"></div>
+    <p>Loading Module...</p>
+  </div>
+</template>
 <single-spa-router>
   <!--
 
@@ -25,18 +31,20 @@
     <route default>
       <application name="@NovaOrg/nova-mfe-shared-layout"></application>
 
-      <route path="dashboard">
-        <application name="@NovaOrg/nova-mfe-dashboard"></application>
-      </route>
-      <route path="recruitment">
-        <application name="@NovaOrg/nova-mfe-recruitment"></application>
-      </route>
-      <route path="payroll">
-        <application name="@NovaOrg/nova-mfe-payroll"></application>
-      </route>
-      <route path="schedule">
-        <application name="@NovaOrg/nova-mfe-schedule"></application>
-      </route>
+      <main>
+        <route path="dashboard">
+          <application name="@NovaOrg/nova-mfe-dashboard" loader="main-loader"></application>
+        </route>
+        <route path="recruitment">
+          <application name="@NovaOrg/nova-mfe-recruitment" loader="main-loader"></application>
+        </route>
+        <route path="payroll">
+          <application name="@NovaOrg/nova-mfe-payroll" loader="main-loader"></application>
+        </route>
+        <route path="schedule">
+          <application name="@NovaOrg/nova-mfe-schedule" loader="main-loader"></application>
+        </route>
+      </main>
     </route>
   </div>
 </single-spa-router>

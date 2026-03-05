@@ -37,3 +37,13 @@ declare module "*.svg" {
   const src: string;
   export default src;
 }
+
+declare module "@NovaOrg/auth-utils" {
+  export interface AuthStatus {
+    user: { authenticated: boolean } | null;
+  }
+
+  export function checkAuthStatus(): Promise<AuthStatus>;
+  export function getCachedUser(): AuthStatus;
+  export function logout(): Promise<void>;
+}

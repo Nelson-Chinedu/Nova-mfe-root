@@ -5,6 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Nova</title>
+
+  <style>
+  .spinner-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; 
+    width: 85%;
+    margin-left: 15%;
+    flex-grow: 1;
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3c41e9;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
   
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
   
@@ -31,9 +61,9 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "@NovaOrg/root-config": "//localhost:9000/NovaOrg-root-config.js",
+        "@NovaOrg/auth-utils": "http://localhost:8089/NovaOrg-auth-utils.js",
+        "@NovaOrg/root-config": "http://localhost:9000/NovaOrg-root-config.js",
         "@NovaOrg/nova-mfe-auth": "http://localhost:8081/NovaOrg-nova-mfe-auth.js",
-        "@NovaOrg/nova-mfe-shared-ui": "http://localhost:8080/NovaOrg-nova-mfe-shared-ui.js",
         "@NovaOrg/nova-mfe-shared-layout": "http://localhost:8082/NovaOrg-nova-mfe-shared-layout.js",
         "@NovaOrg/nova-mfe-dashboard": "http://localhost:8083/main.js",
         "@NovaOrg/nova-mfe-recruitment": "http://localhost:8084/main.js",
